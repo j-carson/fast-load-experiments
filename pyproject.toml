@@ -1,0 +1,50 @@
+[project]
+name = "fast-load-experiments"
+version = "0.0.0"
+description = "Testing out different ways to load data into Postgres"
+license = {"file" = "LICENSE"}
+dynamic = ["readme"]
+
+dependencies = [
+   "duckdb",
+   "pyarrow",
+   "memory-profiler",
+   "pgpq", 
+   "psycopg[binary]", 
+   "psycopg2-binary",
+   "requests",
+   "typing-extensions",
+]
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"]}
+
+[project.optional-dependencies]
+dev = [ "ruff", "black" ]
+test = [ "pytest" ] 
+
+[build-system]
+requires = [ "setuptools", "build[virtualenv]" ]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+select = [
+  "E",   # pycodestyle
+  "W",   # pycodestyle
+  "F",   # pyflakes
+  "UP",  # pyupgrade
+  "C4", # flake8-comprehensions
+  "C90", # mccabe complexity
+  "I",   # isort
+  "ANN", # flake8-annotations
+  "A",   # flake8-builtins
+  "EM",   # flake8-errmsg
+  "G",   # flake8-logging
+  "RET",   # flake8-return
+  "TCH",   # flake8-type-checking
+  "ARG",   # flake8-unused-arguments
+  "TRY",   # try-catch
+  "RUF",   # ruff-specific
+]
+
+ignore = ["E501", "ANN4"]
